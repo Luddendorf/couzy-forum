@@ -1,0 +1,52 @@
+.greeting {
+	&__container {
+		width: 100%;
+		height: 400px;
+		background-color: $primary;
+		padding: 0 0 0 50px;
+	}
+	&__legend {
+		&-one {
+			color: $light;
+			font-size: $font-big;
+			font-family: $family-header;
+			letter-spacing: 5px;
+			margin: $margin-bottom-big;
+		}
+		&-big {
+			display: flex;
+			margin: $margin-bottom-big;
+			&-white {
+			    color: $light;
+				font-size: $font-extra-big;
+				font-family: $family-header;
+			    letter-spacing: 5px;
+			}
+			&-yellow {
+			    color: $secondary;
+				font-size: $font-extra-big;
+				font-family: $family-header;
+			    letter-spacing: 5px;
+			    margin: 0 15px 0 0;
+			}
+		}
+		&-medium {
+            display: flex;
+            margin: $margin-bottom-big;
+			&-white {
+			    color: $light;
+				font-size: $font-larger;
+				font-family: $family-header;
+			    letter-spacing: 5px;
+			}
+			&-yellow {
+				color: $secondary;
+				font-size: $font-larger;
+				font-family: $family-header;
+			    letter-spacing: 5px;
+			    text-transform: uppercase;
+			    padding: 0 10px;
+			}
+		}
+	}
+}

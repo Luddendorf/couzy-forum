@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Button } from '../../../components/button/Button';
 import styles from '../../../scss/main.scss';
 
 export function Greeting() {
@@ -22,7 +23,7 @@ export function Greeting() {
             <div className="greeting__legend-medium-yellow">the couziest place </div>
             <div className="greeting__legend-medium-white">to talk</div>
          </div>
-         <button>Join</button>
+         <Button />
       </div>
     </div>
   );

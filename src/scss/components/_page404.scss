@@ -1,0 +1,13 @@
+.page404 {
+	&__container {
+		display: flex;
+		width: 100vw;
+		height: 100vh;
+	}
+	&__content {
+		background-color: $lightblue;
+		width: 100vw;
+		padding: 50px;
+		font-size: $font-larger;
+	}
+}

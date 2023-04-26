@@ -1,14 +1,23 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import logo from './logo.svg';
 import { Home } from './features/home/Home';
+import { Page404 } from './components/page404/Page404';
+import { MyAccount } from './features/my-account/MyAccount';
 import './App.css';
 import './App.scss';
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-    </div>
+  	<BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Outlet />}>
+          <Route index element={<Home />} />
+          <Route path="my-account" element={<MyAccount />} />
+          <Route path="*" element={<Page404 />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

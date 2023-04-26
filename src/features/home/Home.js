@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Outlet } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { Central } from '../central/Central';
 import { Topbar } from '../topbar/Topbar';
@@ -17,7 +18,6 @@ export function Home() {
         <Topbar />
         <Central />
       </div>
-      
     </div>
   );
 }

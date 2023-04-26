@@ -1,9 +1,10 @@
 import React, { useState, createElement } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch, useEffect } from 'react-redux';
 import { Ripple } from '../ripple/Ripple';
 import styles from '../../scss/main.scss';
 
-export function Button() {
+export function Button(props) {
   // const count = useSelector(selectCount);
   // const dispatch = useDispatch();
   const [ripple, setRipple] = useState([0]);
@@ -13,20 +14,18 @@ export function Button() {
 
   const createRipple = (e) => {
     e.preventDefault();
-    console.log('The link was clicked.');
-    console.log(ripple);
+    // console.log('The link was clicked.');
+    // console.log(ripple);
 
 
     const button = e.currentTarget;
-
+    const diameter = Math.max(button.clientWidth, button.clientHeight);
+    const radius = diameter / 2;
     const oldRipple = button.getElementsByClassName('button-ripple')[0];
 
     if (oldRipple) {
-      oldRipple.remove();
+      
     }
-
-    const diameter = Math.max(button.clientWidth, button.clientHeight);
-    const radius = diameter / 2;
 
     setRipple([{
       key: 'rippling-circle',
@@ -60,14 +59,12 @@ export function Button() {
 
   return (
     <div>
-      <div className="button__container"
-       onClick={createRipple}>
-        <div className="button__legend">Join</div>
+        <div className="button__container" onClick={createRipple}>
+            <div className="button__legend">{props.legend}</div>
 
-        {ripple.map((value, index) => <Ripple key={"ripple" + index} styles={value}
-            className="button-ripple"/>)}
-      </div>
-      
+            {ripple.map((value, index) => <Ripple key={"ripple" + index} styles={value}
+            className="button-ripple" />)}
+        </div>
     </div>
   );
 }

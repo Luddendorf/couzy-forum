@@ -1,0 +1,12 @@
+.my-account {
+	&__container {
+		display: flex;
+		width: 100vw;
+		height: 100vh;
+	}
+	&__content {
+		background-color: #c9bab9;
+		width: 100vw;
+		padding: 40px;
+	}
+}

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '../../../components/button/Button';
 import styles from '../../../scss/main.scss';
@@ -7,8 +8,19 @@ export function Greeting() {
   // const count = useSelector(selectCount);
   // const dispatch = useDispatch();
   // const [incrementAmount, setIncrementAmount] = useState('2');
+  const [canGoToMyAccount, setCanGoToMyAccount] = useState(false);
 
   // const incrementValue = Number(incrementAmount) || 0; {styles.home__container}
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (canGoToMyAccount) {
+      navigate('my-account', {state: {id: 2, name: 'Bob'}});
+    }
+  });
+
+  const handleLinkClick = () => { setCanGoToMyAccount(!canGoToMyAccount); }
 
   return (
     <div>
@@ -23,7 +35,13 @@ export function Greeting() {
             <div className="greeting__legend-medium-yellow">the couziest place </div>
             <div className="greeting__legend-medium-white">to talk</div>
          </div>
-         <Button />
+         <Button legend="Join" />
+         <div>
+           <Link onClick={handleLinkClick}>My Account</Link>
+         </div>
+         
+         { location.state ? <h1>We got message from My Account. Your ID is {location.state.id} now.
+         And Your name is set to {location.state.name}.</h1> : '' }
       </div>
     </div>
   );

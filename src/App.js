@@ -4,10 +4,10 @@ import { Home } from './features/home/Home';
 import './App.css';
 import './App.scss';
 
-function App() {
+function App(props) {
   return (
     <div className="App">
-      <Home />
+     <Home />
     </div>
   );
 }

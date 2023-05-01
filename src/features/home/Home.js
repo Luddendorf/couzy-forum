@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Outlet } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { Central } from '../central/Central';
-import { Topbar } from '../topbar/Topbar';
+import { Central } from './central/Central';
+// import { Topbar } from '../topbar/Topbar';
 import styles from '../../scss/main.scss';
 
 export function Home() {
@@ -15,7 +15,6 @@ export function Home() {
   return (
     <div>
       <div className="home__container">
-        <Topbar />
         <Central />
       </div>
     </div>

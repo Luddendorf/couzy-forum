@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { Button } from '../../../components/button/Button';
-import styles from '../../../scss/main.scss';
+import { Button } from '../../../../components/button/Button';
+import styles from '../../../../scss/main.scss';
 
 export function Greeting() {
   // const count = useSelector(selectCount);
@@ -35,7 +35,7 @@ export function Greeting() {
             <div className="greeting__legend-medium-yellow">the couziest place </div>
             <div className="greeting__legend-medium-white">to talk</div>
          </div>
-         <Button legend="Join" />
+         <Button legend="Join" width="150" height="50" fontSize="32" />
          <div>
            <Link onClick={handleLinkClick}>My Account</Link>
          </div>

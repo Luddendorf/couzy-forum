@@ -4,4 +4,50 @@
 	  height: 200px;
 	  background-color: $primary;
 	}
+	&__row {
+		&--first {
+		    display: flex;
+			justify-content: space-between;
+			padding: 1rem 2rem 0 2rem;
+			&-right {
+				display: flex;
+				align-items: center;
+			}
+		}
+
+		&--second {
+			display: flex;
+			justify-content: space-between;
+			padding: 2rem 2rem 0 2rem;
+			&--menu {
+			  display: flex;
+			}
+			&--search {
+
+			}
+		}
+		&--third {
+			display: flex;
+		}
+	}
+
+	&__logo-main {
+		width: 184px;
+		height: 100px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-image: url('../../img/logo-big.jpg');
+	}
+
+	&__sign-in-wrapper {
+		color: $secondary;
+		margin: 0 2rem 0 0;
+	}
+
+	&__menu {
+		&--item {
+			color: $secondary;
+			margin: 0 1rem 0 0;
+		}
+	}
 }

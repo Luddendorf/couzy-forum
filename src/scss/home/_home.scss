@@ -1,7 +1,7 @@
 .home {
 	&__container {
 		width: 100vw;
-		height: 100vh;
+		// height: calc(100vh - 200px);
 		background-color: brown;
 	}
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Greeting } from './greeting/Greeting';
-import styles from '../../scss/main.scss';
+import styles from '../../../scss/main.scss';
 
 export function Central() {
   // const count = useSelector(selectCount);

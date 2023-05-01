@@ -59,8 +59,9 @@ export function Button(props) {
 
   return (
     <div>
-        <div className="button__container" onClick={createRipple}>
-            <div className="button__legend">{props.legend}</div>
+        <div className="button__container" style={{width: props.width + 'px', height: props.height + 'px'}}
+        onClick={createRipple}>
+            <div className="button__legend" style={{fontSize: props.fontSize + 'px'}}>{props.legend}</div>
 
             {ripple.map((value, index) => <Ripple key={"ripple" + index} styles={value}
             className="button-ripple" />)}

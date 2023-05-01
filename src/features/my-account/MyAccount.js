@@ -12,7 +12,7 @@ export function MyAccount(props) {
 
   useEffect(() => {
     if (canGoToHome) {
-      navigate('/', {state: {id: 5, name: 'Sam'}});
+      navigate('/', {state: {id: 6, name: 'Benjamin'}});
     }
   });
 

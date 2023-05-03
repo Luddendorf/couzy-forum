@@ -75,6 +75,26 @@ pre {
 
 a {
   background-color: transparent;
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  height: auto;
+  border-width: 0;
+  color: inherit;
+  font-family: inherit;
+  font-weight: normal;
+  font-size: inherit;
+  text-decoration: none;
+  line-height: inherit;
+}
+
+a:hover, a:visited, a:active {
+  color: inherit;
+  text-decoration: inherit;
+  outline: 0;
 }
 
 /**
@@ -346,4 +366,12 @@ template {
 
 [hidden] {
   display: none;
+}
+
+li {
+  list-style: none;
+}
+
+menu {
+  margin: 0;
 }

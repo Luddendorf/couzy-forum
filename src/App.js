@@ -23,3 +23,6 @@ function App() {
 }
 
 export default App;
+
+// kubectl port-forward -n my-namespace deployment/my-app-name 6479:8084
+

@@ -1,24 +1,32 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '../../components/button/Button';
+import { setActiveTopbarItem, setActiveSubmenuItem, selectActiveMenuItem, selectActiveSubMenuItem
+} from './topbarSlice';
 import styles from '../../scss/main.scss';
 
 export function Topbar() {
-  // const count = useSelector(selectCount);
-  // const dispatch = useDispatch();
-  const [activeMenuItem, setactiveMenuItem] = useState('topbar-browse');
+  const activeTab = useSelector(selectActiveMenuItem);
+  const activeSubTab = useSelector(selectActiveSubMenuItem);
+  const dispatchTopbarActions = useDispatch();
+  const [activeMenuItem, setActiveMenuItem] = useState('topbar-browse');
+  const [activeSubmenuItem, setActiveSubmenuItem] = useState('topbar-topics');
 
   // const incrementValue = Number(incrementAmount) || 0; {styles.home__container}
   const changeActiveTab = (e, menuItemName) => {
     e.preventDefault();
     const menuItem = e.currentTarget;
+    // setactiveMenuItem('hello-' + menuItemName);
+    // const currentMenuItemName = activeMenuItem;
     console.log(menuItemName);
+    dispatchTopbarActions(setActiveTopbarItem(activeMenuItem));
   }
 
   const changeActiveSubmenuItem = (e, submenuItemName) => {
     e.preventDefault();
     const menuItem = e.currentTarget;
     console.log(submenuItemName);
+    dispatchTopbarActions(setActiveSubmenuItem(activeSubmenuItem));
   }
 
 

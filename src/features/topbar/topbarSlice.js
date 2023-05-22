@@ -2,8 +2,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { sendSelectedMenuItem } from './topbarAPI';
 
 const initialState = {
-  value: 0,
-  status: 'idle',
   selectedMenuItem: 'topbar-browse',
   selectedSubmenuItem: 'topbar-topics'
 };
@@ -37,10 +35,10 @@ export const topbarSlice = createSlice({
     //   state.value += action.payload;
     // },
     setActiveTopbarItem: (state, action) => {
-        return { ...state, selectedMenuItem: action.payload };
+      return { ...state, selectedMenuItem: action.payload };
     },
     setActiveSubmenuItem: (state, action) => {
-        return { ...state, selectedSubmenuItem: action.payload };
+      return { ...state, selectedSubmenuItem: action.payload };
     }
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
@@ -63,7 +61,13 @@ export const { setActiveTopbarItem, setActiveSubmenuItem } = topbarSlice.actions
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 export const selectActiveMenuItem = (state) => state.topbar.selectedMenuItem;
+
 export const selectActiveSubMenuItem = (state) => state.topbar.selectedSubmenuItem;
+
+// export const giveActiveMenuItem = () => (getState) => {
+//   const currentMenuItemName = selectActiveMenuItem(getState());
+//   return currentMenuItemName;
+// }
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.

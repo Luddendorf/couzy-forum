@@ -9,26 +9,22 @@ export function Topbar() {
   const activeTab = useSelector(selectActiveMenuItem);
   const activeSubTab = useSelector(selectActiveSubMenuItem);
   const dispatchTopbarActions = useDispatch();
-  const [activeMenuItem, setActiveMenuItem] = useState('topbar-browse');
-  const [activeSubmenuItem, setActiveSubmenuItem] = useState('topbar-topics');
+  const [activeFirstRow, setActiveFirstRow] = useState('topbar-browse');
+  const [activeSecondRow, setActiveSecondRow] = useState('topbar-topics');
 
   // const incrementValue = Number(incrementAmount) || 0; {styles.home__container}
   const changeActiveTab = (e, menuItemName) => {
     e.preventDefault();
-    const menuItem = e.currentTarget;
-    // setactiveMenuItem('hello-' + menuItemName);
-    // const currentMenuItemName = activeMenuItem;
-    console.log(menuItemName);
-    dispatchTopbarActions(setActiveTopbarItem(activeMenuItem));
+    // const menuItem = e.currentTarget;
+    dispatchTopbarActions(setActiveTopbarItem(menuItemName));
   }
 
   const changeActiveSubmenuItem = (e, submenuItemName) => {
     e.preventDefault();
-    const menuItem = e.currentTarget;
-    console.log(submenuItemName);
-    dispatchTopbarActions(setActiveSubmenuItem(activeSubmenuItem));
+    // const menuItem = e.currentTarget;
+    // console.log(submenuItemName);
+    dispatchTopbarActions(setActiveSubmenuItem(submenuItemName));
   }
-
 
   return (
       <div className="topbar__container">
@@ -53,7 +49,7 @@ export function Topbar() {
           </div>
         </div>
         <div className="topbar__row--third">
-
+          { activeTab === 'topbar-browse' ? 
           <menu className="topbar__submenu--browse">
             <li href="#" className="topbar__submenu--item"
                 onClick={(event) => changeActiveSubmenuItem(event, 'topbar-topics')}>Topics</li>
@@ -63,8 +59,9 @@ export function Topbar() {
                 onClick={(event) => changeActiveSubmenuItem(event, 'topbar-users-online')}>Users Online</li>
             <li href="#" className="topbar__submenu--item"
                 onClick={(event) => changeActiveSubmenuItem(event, 'topbar-our-team')}>Our Team</li>
-          </menu>
+          </menu> : ''}
 
+          { activeTab === 'topbar-events' ? 
           <menu className="topbar__submenu--browse">
             <li href="#" className="topbar__submenu--item"
                 onClick={(event) => changeActiveSubmenuItem(event, 'topbar-all-meetings')}>All Meetings</li>
@@ -72,14 +69,15 @@ export function Topbar() {
                 onClick={(event) => changeActiveSubmenuItem(event, 'topbar-holidays')}>Holidays</li>
             <li href="#" className="topbar__submenu--item"
                 onClick={(event) => changeActiveSubmenuItem(event, 'topbar-search')}>Search</li>
-          </menu>
+          </menu> : '' }
 
+          { activeTab === 'topbar-get-help' ?
           <menu className="topbar__submenu--browse">
             <li href="#" className="topbar__submenu--item"
                 onClick={(event) => changeActiveSubmenuItem(event, 'topbar-faq')}>FAQ</li>
             <li href="#" className="topbar__submenu--item"
                 onClick={(event) => changeActiveSubmenuItem(event, 'topbar-contact-us')}>Contact Us</li>
-          </menu>
+          </menu> : '' }
 
         </div>
       </div>

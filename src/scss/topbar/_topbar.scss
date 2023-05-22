@@ -32,7 +32,7 @@
 			display: flex;
 			background-color: $light;
 			border-bottom: $border-standard;
-			padding: 0 2rem;
+			padding: 0 1rem;
 		}
 	}
 
@@ -57,6 +57,7 @@
 			font-size: $font-button;
 			letter-spacing: 1px;
 			cursor: pointer;
+			user-select: none;
 		}
 	}
 
@@ -75,6 +76,7 @@
 			padding: 0.5rem 1rem;
 			border-radius: 20px;
 			cursor: pointer;
+			user-select: none;
 			// border: 1px solid red;
 			&:hover {
 				color: $dark-gray-hover;

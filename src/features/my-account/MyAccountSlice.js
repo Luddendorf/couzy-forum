@@ -1,23 +1,11 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { sendSelectedMenuItem } from './topbarAPI';
-
+import {  createSlice } from '@reduxjs/toolkit';
 const initialState = {
-  selectedMenuItem: 'topbar-browse',
-  selectedSubmenuItem: 'topbar-topics',
-  selectedBackgroundColor:'black'
+  selectedLocation: 'MyAccount',
+  canGoHome:'false',
 };
 
-export const setSelectedMenuItemAsync = createAsyncThunk(
-  'topbar/sendSelectedMenuItem',
-  async (selectedMenuItem) => {
-    const response = await sendSelectedMenuItem(selectedMenuItem);
-    // The value we return becomes the `fulfilled` action payload
-    return response.data;
-  }
-);
-
-export const topbarSlice = createSlice({
-  name: 'topbar',
+export const accountSlice = createSlice({
+  name: 'account',
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
@@ -35,16 +23,12 @@ export const topbarSlice = createSlice({
     // incrementByAmount: (state, action) => {
     //   state.value += action.payload;
     // },
-    setActiveTopbarItem: (state, action) => {
-      return { ...state, selectedMenuItem: action.payload };
+    setLocation: (state, action) => {
+      return { ...state, selectedLocation: action.payload };
     },
-    setActiveSubmenuItem: (state, action) => {
+    setCanGoHome: (state, action) => {
       return { ...state, 
-		selectedSubmenuItem: action.payload };
-    },
-	setBackgroundColor: (state, action) => {
-      return { ...state, 
-		selectedBackgroundColor:action.payload};
+		canGoHome: action.payload };
     }
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
@@ -61,14 +45,13 @@ export const topbarSlice = createSlice({
   },  */
 });
 
-export const { setActiveTopbarItem, setActiveSubmenuItem,setBackgroundColor} = topbarSlice.actions;
+export const {setLocation, setCanGoHome} = accountSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
-export const selectActiveMenuItem = (state) => state.topbar.selectedMenuItem;
-export const selectBackgroundColor = (state) => state.topbar.selectedBackgroundColor;
-export const selectActiveSubMenuItem = (state) => state.topbar.selectedSubmenuItem;
+export const selectCanGoHome = (state) => state.account.canGoHome;
+export const selectLocation = (state) => state.account.selectedLocation;
 // export const giveActiveMenuItem = () => (getState) => {
 //   const currentMenuItemName = selectActiveMenuItem(getState());
 //   return currentMenuItemName;
@@ -83,4 +66,4 @@ export const selectActiveSubMenuItem = (state) => state.topbar.selectedSubmenuIt
   } 
 }; */
 
-export default topbarSlice.reducer;
+export default accountSlice.reducer;

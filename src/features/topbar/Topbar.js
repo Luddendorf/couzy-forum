@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
+import { changeColor } from './ChangeColor';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '../../components/button/Button';
-import { setActiveTopbarItem, setActiveSubmenuItem, selectActiveMenuItem, selectActiveSubMenuItem
+import { setActiveTopbarItem, setActiveSubmenuItem, selectActiveMenuItem, selectActiveSubMenuItem, selectBackgroundColor, setBackgroundColor
 } from './topbarSlice';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMoon } from '@fortawesome/free-solid-svg-icons'
 import styles from '../../scss/main.scss';
 
 export function Topbar() {
   const activeTab = useSelector(selectActiveMenuItem);
   const activeSubTab = useSelector(selectActiveSubMenuItem);
+  const activeBackgroundColor = useSelector(selectBackgroundColor);
   const dispatchTopbarActions = useDispatch();
   const [activeFirstRow, setActiveFirstRow] = useState('topbar-browse');
   const [activeSecondRow, setActiveSecondRow] = useState('topbar-topics');
@@ -25,7 +29,17 @@ export function Topbar() {
     // console.log(submenuItemName);
     dispatchTopbarActions(setActiveSubmenuItem(submenuItemName));
   }
-
+const changeBackgroundColor=(e)=>{
+	e.preventDefault();
+	console.log(activeBackgroundColor)
+    if(activeBackgroundColor==='black'){
+		dispatchTopbarActions(setBackgroundColor("white"))
+		changeColor('white')
+		return
+	}
+	dispatchTopbarActions(setBackgroundColor("black"))
+	changeColor('black')
+}
   return (
       <div className="topbar__container">
         <div className="topbar__row--first">
@@ -33,6 +47,7 @@ export function Topbar() {
           <div className="topbar__row--first-right">
             <h1 className="topbar__sign-in-wrapper">Sign in element</h1>
             <Button legend="Sign up" width="150" height="40" fontSize="25"/>
+			<FontAwesomeIcon  onClick={(event) => changeBackgroundColor(event)} icon={faMoon} style={{color: "#050505",}} />
           </div>
         </div>
         <div className="topbar__row--second">

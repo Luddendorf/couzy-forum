@@ -3,28 +3,28 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Button } from '../../components/button/Button';
 // import { useSelector, useDispatch } from 'react-redux';
 import styles from '../../scss/main.scss';
+import MyAccountSlice, {selectCanGoHome,selectLocation,setCanGoHome} from './MyAccountSlice';
+import {useDispatch, useSelector} from 'react-redux';
 
 export function MyAccount(props) {
-  const [canGoToHome, setCanGoToHome] = useState(false);
-
+  const canGoToHome=useSelector(selectCanGoHome)
+  const dispatchAccount=useDispatch()
+  const location=useSelector(selectLocation)
   const navigate = useNavigate();
-  const location = useLocation();
-
   useEffect(() => {
     if (canGoToHome) {
-      navigate('/', {state: {id: 6, name: 'Benjamin'}});
+      navigate('/');
     }
   });
 
-  const goToHome = () => { setCanGoToHome(!canGoToHome); }
+  const goToHome = () => { dispatchAccount(setCanGoHome(!canGoToHome)); }
 
   return (
     <div>
       <div className="my-account__container">
         <div className="my-account__content">
         <h1>My personal room.</h1>
-         { location.state ? <h1>Hello {location.state.name}.
-           Your ID is {location.state.id}</h1> : '' }
+         <h1>Hello.Your ID is</h1>
 		  <div>
             <Link onClick={goToHome}>
             Home</Link>

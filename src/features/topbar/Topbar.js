@@ -37,15 +37,26 @@ export function Topbar() {
         </div>
         <div className="topbar__row--second">
           <menu className="topbar__row--second--menu">
-            <li href="#" className="topbar__menu--item"
+            <div className="topbar__menu--holder">
+              <li href="#" className="topbar__menu--item"
                 onMouseEnter={(event) => changeActiveTab(event, 'topbar-browse')}>Browse</li>
+              <span className="topbar__menu--hat"></span> 
+            </div>
+            <div className="topbar__menu--holder">
             <li href="#" className="topbar__menu--item"
                 onMouseEnter={(event) => changeActiveTab(event, 'topbar-events')}>Events</li>
+              <span className="topbar__menu--hat"></span> 
+            </div>
+            <div className="topbar__menu--holder">
             <li href="#" className="topbar__menu--item"
                 onMouseEnter={(event) => changeActiveTab(event, 'topbar-get-help')}>Get Help</li>
+              <span className="topbar__menu--hat"></span> 
+            </div>
           </menu>
-          <div className="topbar__row--second--search">
-              <input type="text" />
+          <div className="topbar__row--second--search--holder">
+            <div className="topbar__row--second--search">
+                <input type="text" />
+            </div>
           </div>
         </div>
         <div className="topbar__row--third">

@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // import { decrement, increment, incrementByAmount, incrementAsync, incrementIfOdd,
 //   selectCount } from './counterSlice';
+import { selectActiveSubMenuItem }  from '../topbar/topbarSlice';
 import { Topbar } from '../topbar/Topbar';
 import { Home } from '../home/Home';
+import { Counter } from '../counter/Counter';
 import styles from '../../scss/main.scss';
 
 
@@ -12,11 +14,21 @@ export function Main() {
   // const dispatch = useDispatch();
   // const [incrementAmount, setIncrementAmount] = useState('2');
   // const incrementValue = Number(incrementAmount) || 0;
+  const submenuItem = useSelector(selectActiveSubMenuItem);
+
+  const renderMain = (chosenSubmenuItem) => {
+    switch(chosenSubmenuItem) {
+      case 'topbar-topics':
+        return <Home />;
+      default:
+        return <Counter />;
+    }
+  }
 
   return (
     <div className="main__container">
       <Topbar />
-      <Home />
+      { renderMain(submenuItem) }
     </div>
   );
 }

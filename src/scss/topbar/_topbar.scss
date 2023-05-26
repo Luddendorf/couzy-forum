@@ -19,13 +19,16 @@
 			height: 50px;
 			display: flex;
 			justify-content: space-between;
-			align-items: center;
+			align-items: flex-end;
 			padding: 2rem 2rem 0 2rem;
 			&--menu {
 			  display: flex;
 			}
 			&--search {
-
+				&--holder {
+					height: 39px;
+					display: flex;
+				}
 			}
 		}
 		&--third {
@@ -50,6 +53,14 @@
 	}
 
 	&__menu {
+		&--holder {
+		    display: flex;
+		    flex-direction: column;
+		    align-items: center;
+			overflow: hidden;
+			height: 39px;
+			position: relative;
+	    }
 		&--item {
 			color: $secondary;
 			margin: 0 2rem 0 0;
@@ -58,7 +69,21 @@
 			letter-spacing: 1px;
 			cursor: pointer;
 			user-select: none;
+			&:hover {
+
+			}
 		}
+		&--hat {
+			display: none;
+			width: 1rem;
+			height: 1rem;
+			background-color: $light;
+			transform: rotate(45deg);
+			margin: 0 2rem 0 0;
+			position: absolute;
+			bottom: -11px;
+		}
+
 	}
 
 	&__submenu {
@@ -87,4 +112,8 @@
 			}
 		}
 	}
+}
+
+.topbar__menu--item:hover + .topbar__menu--hat {
+	display: block;
 }

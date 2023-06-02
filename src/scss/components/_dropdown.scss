@@ -1,0 +1,76 @@
+.dropdown {
+	&__container {
+		position: relative;
+  		//overflow: hidden;
+  		// transition: background 400ms;
+        // background-color: $secondary;
+  	    // outline: 0;
+        // border: 0;
+        // border-radius: 4px;
+        // box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+
+	}
+    &__tag {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        user-select: none;
+    }
+
+	&__legend {
+	    color: $secondary;
+        font-family: $family-main;
+        font-size: 2rem;
+	}
+
+    &__trigger {
+        &--holder {
+            width: 24px;
+            height: 24px;
+            margin: 0 0 0 10px;
+        }
+    }
+
+    &__icon {
+        &--wrapper {
+            background-image: url(../../img/icons/caret-down.svg);
+            height: 100%;
+            background-size: cover;
+            animation: arrow-down 0.5s forwards;
+        }
+        &--up {
+            animation: arrow-up 0.5s forwards;
+        }
+    }
+    &__body {
+        position: absolute;
+        right: -174px;
+        top: 50px;
+        width: 650px;
+        height: 350px;
+        border-radius: 3px;
+        background-color: $light;
+        z-index: 1;
+        &--hide {
+            display: none;
+        }
+    }
+}
+
+@keyframes arrow-up {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes arrow-down {
+    0% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }

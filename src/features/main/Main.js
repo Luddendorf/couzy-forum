@@ -20,8 +20,16 @@ export function Main() {
     switch(chosenSubmenuItem) {
       case 'topbar-topics':
         return <Home />;
+      case 'topbar-gallery':
+      case 'topbar-users-online':
+      case 'topbar-our-team':
+      case 'topbar-all-meetings':
+      case 'topbar-holidays':
+      case 'topbar-search':
+      case 'topbar-faq':
+      case 'topbar-contact-us':  
       default:
-        return <Counter />;
+        return <Home />;
     }
   }
 

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '../../components/button/Button';
+import { SignIn } from '../auth/signin/SignIn';
 import { setActiveTopbarItem, setActiveSubmenuItem, selectActiveMenuItem, selectActiveSubMenuItem
 } from './topbarSlice';
 import styles from '../../scss/main.scss';
+
 
 export function Topbar() {
   const activeTab = useSelector(selectActiveMenuItem);
@@ -31,7 +33,7 @@ export function Topbar() {
         <div className="topbar__row--first">
           <div className="topbar__logo-main"></div>
           <div className="topbar__row--first-right">
-            <h1 className="topbar__sign-in-wrapper">Sign in element</h1>
+            <div className="topbar__sign-in-wrapper"><SignIn /></div>
             <Button legend="Sign up" width="150" height="40" fontSize="25"/>
           </div>
         </div>

@@ -7,7 +7,7 @@ export function Dropdown(props) {
     const toggleArrow = () => { setIsArrowUp(!isArrowUp); }
 
     const makeArrowClassList = () => {
-        return `dropdown__icon--wrapper ${isArrowUp ? 'dropdown__icon--up' : ''}`;
+        return `dropdown__icon--wrapper ${isArrowUp ? 'dropdown__icon--up' : 'dropdown__icon--down'}`;
     }
 
     const makeBodyClassList = () => {
@@ -24,7 +24,9 @@ export function Dropdown(props) {
                     </div>
                 </div>
             </div>
-            <div className={makeBodyClassList()}></div>
+            <div className={makeBodyClassList()}>
+                {props.children}
+            </div>
         </div>
     );
 }

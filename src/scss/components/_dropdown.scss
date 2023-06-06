@@ -36,10 +36,12 @@
             background-image: url(../../img/icons/caret-down.svg);
             height: 100%;
             background-size: cover;
-            animation: arrow-down 0.5s forwards;
         }
         &--up {
-            animation: arrow-up 0.5s forwards;
+          animation: arrow-up 0.5s forwards;
+        }
+        &--down {
+          animation: arrow-down 0.5s forwards;
         }
     }
     &__body {

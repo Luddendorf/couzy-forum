@@ -1,12 +1,27 @@
+import { useState } from 'react';
+
 import { Button } from '../../../components/button/Button';
 import { InputText } from '../../../components/inputText/InputText';
 
 export function SignIn() {
-    const handleInputText = (payload) => {
-        // console.log('User input is: ', event.target.value);
-        //console.log('User input is: ', event.nativeEvent.explicitOriginalTarget.value);
-        //console.log();
-        console.log('Payload from inputText form control: ', payload);
+    const [emailErrorMessage, setEmailErrorMessage] = useState('');
+    const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
+
+    const handleEmailInput = (payload) => {
+        if (!payload.validation) {
+            setEmailErrorMessage('');
+            return;
+        }
+        const key = Object.keys(payload.validation.errors)[0];
+        setEmailErrorMessage(errorMessagesEmail[key]);
+    }
+    const handlePasswordInput = (payload) => {
+        if (!payload.validation) {
+            setPasswordErrorMessage('');
+            return;
+        }
+        const key = Object.keys(payload.validation.errors)[0];
+        setPasswordErrorMessage(errorMessagesPassword[key]);
     }
     const validatorsConfigEmail = [
         { name: 'required', params: null },
@@ -22,19 +37,43 @@ export function SignIn() {
         { name: 'password', params: null }
     ];
 
+    const errorMessagesEmail = {
+        required: 'Email is required.',
+        minLength: 'Email must have at least 3 letters.',
+        maxLength: 'Email can have no more than 50 letters.',
+        email: 'Email format is not valid'
+    };
+
+    const errorMessagesPassword = {
+        required: 'Password is required',
+        minLength: 'Password should be at least 8 symbols long',
+        maxLength: 'Password can not be more than 20 symbols long',
+        password: 'Password should have 1 capital letter, 1 digit and 1 symbol'
+    };
+
     return (
         <div className="signin-form__container">
             <div className="signin-form__wrapper">
                 <div className="signin-form__input--text">
-                    <InputText placeholder="Email" type="email" inputHandler={handleInputText}
-                        disabled={false}
+                    <InputText placeholder="Email" type="email"
+                        inputHandler={handleEmailInput} disabled={false}
                         validators={validatorsConfigEmail}
                     />
                 </div>
-                {/* <div className="signin-form__input--text">
+                {/* <div className="signin-form__error--message"></div> */}
+                {emailErrorMessage && <div className="signin-form__error--message">
+                    {emailErrorMessage}</div>}
+                {!emailErrorMessage && <div className="signin-form__spaceer"></div>}
+                <div className="signin-form__input--text">
                     <InputText placeholder="Password" type="password"
-                        disabled={false}
+                        inputHandler={handlePasswordInput} disabled={false}
                         validators={validatorsConfigPassword} />
+                </div>
+                {passwordErrorMessage && <div className="signin-form__error--message">
+                    {passwordErrorMessage}</div>}
+                {!passwordErrorMessage && <div className="signin-form__spaceer"></div>}
+                {/* <div className="signin-form__error--message">Error message: too many letters
+                    Error message: too many letters Error message: too many letters
                 </div> */}
 
                 <div className="signin-form__buttons">

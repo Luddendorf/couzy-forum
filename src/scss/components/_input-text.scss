@@ -10,6 +10,7 @@
         border-radius: 4px;
         padding: 0 4px;
         color: $medium-gray;
+        background-color: whitesmoke;
         border: 1px solid $light-gray;
 
         &:hover,
@@ -25,6 +26,15 @@
 
         &.input-text__field:hover {
             border: 1px solid $disabled-gray;
+        }
+    }
+
+    &__error {
+        border: 1px solid $red;
+
+        &:hover,
+        &:focus {
+            border: 1px solid $red;
         }
     }
 }

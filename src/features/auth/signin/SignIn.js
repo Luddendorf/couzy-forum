@@ -63,7 +63,7 @@ export function SignIn() {
                 {/* <div className="signin-form__error--message"></div> */}
                 {emailErrorMessage && <div className="signin-form__error--message">
                     {emailErrorMessage}</div>}
-                {!emailErrorMessage && <div className="signin-form__spaceer"></div>}
+                {!emailErrorMessage && <div className="signin-form__spacer"></div>}
                 <div className="signin-form__input--text">
                     <InputText placeholder="Password" type="password"
                         inputHandler={handlePasswordInput} disabled={false}
@@ -71,13 +71,13 @@ export function SignIn() {
                 </div>
                 {passwordErrorMessage && <div className="signin-form__error--message">
                     {passwordErrorMessage}</div>}
-                {!passwordErrorMessage && <div className="signin-form__spaceer"></div>}
+                {!passwordErrorMessage && <div className="signin-form__spacer"></div>}
                 {/* <div className="signin-form__error--message">Error message: too many letters
                     Error message: too many letters Error message: too many letters
                 </div> */}
 
                 <div className="signin-form__buttons">
-                    <Button legend="Sign In" width="120" height="40" fontSize="24" />
+                    <Button legend="Sign In" width="120" height="40" fontSize="24" disabled="true" />
                 </div>
             </div>
         </div>

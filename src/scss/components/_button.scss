@@ -1,45 +1,56 @@
 .button {
-	&__container {
-		position: relative;
-  		overflow: hidden;
-  		transition: background 400ms;
-        background-color: $secondary;
-  	    outline: 0;
-        border: 0;
-        border-radius: 4px;
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        user-select: none;
-	}
+  &__container {
+    position: relative;
+    overflow: hidden;
+    transition: background 400ms;
+    background-color: $secondary;
+    outline: 0;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+  }
 
-	&__legend {
-	    color: $dark;
-	  	font-family: $family-main;
-      &--big {
-        font-size: 2rem;
-      }
-      &--medium {
-        font-size: 1rem;
-      }
-      &--small {
-        font-size: 12px;
-      }
-	}
+  &__legend {
+    color: $dark;
+    font-family: $family-main;
+
+    &--big {
+      font-size: 2rem;
+    }
+
+    &--medium {
+      font-size: 1rem;
+    }
+
+    &--small {
+      font-size: 12px;
+    }
+  }
 
   &-big {
     width: 150px;
     height: 50px;
   }
+
   &-medium {
     width: 150px;
     height: 40px;
   }
+
   &-small {
     width: 130px;
     height: 35px;
+  }
+
+  &__disabled {
+    pointer-events: none;
+    background-color: $disabled-gray;
+    color: $disabled-legend;
   }
 }
 

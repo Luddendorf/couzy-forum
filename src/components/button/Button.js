@@ -1,8 +1,5 @@
-import React, { useState, createElement } from 'react';
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch, useEffect } from 'react-redux';
+import React, { useState } from 'react';
 import { Ripple } from '../ripple/Ripple';
-import styles from '../../scss/main.scss';
 
 export function Button(props) {
   // const count = useSelector(selectCount);
@@ -14,9 +11,10 @@ export function Button(props) {
 
   const createRipple = (e) => {
     e.preventDefault();
+    if (props.disabled) {
+      return;
+    }
     // console.log('The link was clicked.');
-    // console.log(ripple);
-
 
     const button = e.currentTarget;
     const diameter = Math.max(button.clientWidth, button.clientHeight);
@@ -24,7 +22,7 @@ export function Button(props) {
     const oldRipple = button.getElementsByClassName('button-ripple')[0];
 
     if (oldRipple) {
-      
+
     }
 
     setRipple([{
@@ -46,26 +44,35 @@ export function Button(props) {
 
     // console.log(circle);
 
-    
+
     // circle.style.width = circle.style.height = `${diameter}px`;
     // circle.style.left = `${e.clientX - (button.offsetLeft + radius)}px`;
     // circle.style.top = `${e.clientY - (button.offsetTop + radius)}px`;
     // circle.classList.add('button-ripple');
 
-// <Ripple key={"ripple" + index} obj={value}/>
+    // <Ripple key={"ripple" + index} obj={value}/>
 
-   //  button.appendChild(circle);
+    //  button.appendChild(circle);
+
+  }
+
+  const makeButtonClass = () => {
+    return `button__container ${props.disabled ? 'button__disabled' : ''}`;
+  }
+
+  const makeButtonLegendClass = () => {
+    return `button__legend ${props.disabled ? 'button__disabled' : ''}`;
   }
 
   return (
     <div>
-        <div className="button__container" style={{width: props.width + 'px', height: props.height + 'px'}}
+      <div className={makeButtonClass()} style={{ width: props.width + 'px', height: props.height + 'px' }}
         onClick={createRipple}>
-            <div className="button__legend" style={{fontSize: props.fontSize + 'px'}}>{props.legend}</div>
+        <div className={makeButtonLegendClass()} style={{ fontSize: props.fontSize + 'px' }}>{props.legend}</div>
 
-            {ripple.map((value, index) => <Ripple key={"ripple" + index} styles={value}
-            className="button-ripple" />)}
-        </div>
+        {ripple.map((value, index) => <Ripple key={"ripple" + index} styles={value}
+          className="button-ripple" />)}
+      </div>
     </div>
   );
 }

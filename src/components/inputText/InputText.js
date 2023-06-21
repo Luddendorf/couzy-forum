@@ -19,8 +19,9 @@ export function InputText(props) {
     };
 
     const makeInputResult = (event) => {
-        setValidationResult(validateField(event));
-        props.inputHandler({ input: event.target.value, validation: validationResult });
+        const currentValidation = validateField(event);
+        setValidationResult(currentValidation);
+        props.inputHandler({ input: event.target.value, validation: currentValidation });
     }
 
     const makeClassList = () => {

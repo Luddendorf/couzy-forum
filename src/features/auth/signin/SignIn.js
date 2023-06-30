@@ -2,27 +2,53 @@ import { useState } from 'react';
 
 import { Button } from '../../../components/button/Button';
 import { InputText } from '../../../components/inputText/InputText';
+import { signInUser } from '../authAPI';
 
 export function SignIn() {
+    const [isEmailPristine, setIsEmailPristine] = useState(true);
+    const [isPasswordPristine, setIsPasswordPristine] = useState(true);
+
     const [emailErrorMessage, setEmailErrorMessage] = useState('');
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
 
+    const [isFormValid, setIsFormValid] = useState(false);
+    const [backendPayload, setBackendPayload] = useState({ email: null, password: null });
+    //const validBackendPayload = null;
+    const [isLoading, setIsLoading] = useState(false);
+
     const handleEmailInput = (payload) => {
+        setIsEmailPristine(false);
+        setIsFormValid((!payload.validation && !passwordErrorMessage && !isPasswordPristine));
         if (!payload.validation) {
             setEmailErrorMessage('');
+            setBackendPayload({ ...backendPayload, email: payload.input });
+            sendValidSignInToBackend();
             return;
         }
         const key = Object.keys(payload.validation.errors)[0];
         setEmailErrorMessage(errorMessagesEmail[key]);
     }
     const handlePasswordInput = (payload) => {
+        setIsPasswordPristine(false);
+        setIsFormValid((!payload.validation && !emailErrorMessage && !isEmailPristine));
         if (!payload.validation) {
             setPasswordErrorMessage('');
+            setBackendPayload({ ...backendPayload, password: payload.input });
             return;
         }
         const key = Object.keys(payload.validation.errors)[0];
         setPasswordErrorMessage(errorMessagesPassword[key]);
     }
+
+    const sendValidSignInToBackend = () => {
+        if (isFormValid) {
+            const formPayload = backendPayload;
+            // console.log('Form payload: ', formPayload);
+            setIsLoading(true);
+            signInUser('Hello', setIsLoading);
+        }
+    }
+
     const validatorsConfigEmail = [
         { name: 'required', params: null },
         { name: 'minLength', params: 3 },
@@ -60,7 +86,6 @@ export function SignIn() {
                         validators={validatorsConfigEmail}
                     />
                 </div>
-                {/* <div className="signin-form__error--message"></div> */}
                 {emailErrorMessage && <div className="signin-form__error--message">
                     {emailErrorMessage}</div>}
                 {!emailErrorMessage && <div className="signin-form__spacer"></div>}
@@ -72,14 +97,12 @@ export function SignIn() {
                 {passwordErrorMessage && <div className="signin-form__error--message">
                     {passwordErrorMessage}</div>}
                 {!passwordErrorMessage && <div className="signin-form__spacer"></div>}
-                {/* <div className="signin-form__error--message">Error message: too many letters
-                    Error message: too many letters Error message: too many letters
-                </div> */}
-
                 <div className="signin-form__buttons">
-                    <Button legend="Sign In" width="120" height="40" fontSize="24" disabled="true" />
+                    <Button legend="Sign In" width="120" height="40" fontSize="24" disabled={!isFormValid} />
                 </div>
             </div>
+            {/* <h1>{process.env.REACT_APP_API_URI}</h1> */}
+            {/* {isLoading && <div style={{ width: '100px', height: '100px', backgroundColor: 'red' }}></div>} */}
         </div>
     );
 }

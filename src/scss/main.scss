@@ -7,7 +7,10 @@
 @import 'components/dropdown';
 @import 'components/input-text';
 @import 'components/page404';
+@import 'components/spinner';
 
+@import 'auth/birthday';
+@import 'auth/privacy-policy';
 @import 'auth/logout';
 @import 'auth/signin/signin-dropdown';
 @import 'auth/signin/signin-form';

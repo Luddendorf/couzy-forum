@@ -1,24 +1,28 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
-import logo from './logo.svg';
-import { Home } from './features/home/Home';
-import { Main } from './features/main/Main';
-import { Page404 } from './components/page404/Page404';
-import { MyAccount } from './features/my-account/MyAccount';
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import './App.css';
 import './App.scss';
+import { Page404 } from './components/page404/Page404';
+import { Spinner } from './components/spinner/Spinner';
+import { Birthday } from './features/auth/birthday/Birthday';
+import { Main } from './features/main/Main';
+import { MyAccount } from './features/my-account/MyAccount';
 
 function App() {
   return (
-  	<BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Outlet />}>
-          <Route index element={<Main />} />
-          <Route path="my-account" element={<MyAccount />} />
-          <Route path="*" element={<Page404 />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <Spinner>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Outlet />}>
+            <Route index element={<Main />} />
+            <Route path="my-account" element={<MyAccount />} />
+            <Route path="enter-birthday" element={<Birthday />} />
+            <Route path="*" element={<Page404 />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </Spinner>
+
   );
 }
 

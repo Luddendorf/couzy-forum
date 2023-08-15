@@ -1,0 +1,179 @@
+.birthday {
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__wrapper {
+        display: flex;
+    }
+
+    &__header {
+        width: 100%;
+        height: 116px;
+        background-color: $primary;
+    }
+
+    &__left {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: calc(100vh - 116px);
+
+        &--picture {
+            width: 760px;
+            height: 60.5%;
+            background-size: contain;
+            background-image: url("../../img/family-on-sofa.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+
+    &__right {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $light;
+
+        &--top {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+
+            &-picture {
+                width: 200px;
+                height: 133px;
+                background-image: url("../../img/bedside-lamp-small.jpg");
+
+                &-wrapper {
+                    display: flex;
+                    align-items: center;
+                }
+            }
+
+            &-right {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 0 0 0 40px;
+            }
+        }
+
+        &--footer {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+        }
+    }
+
+    &__legend {
+        color: $primary;
+        font-size: 45px;
+        font-family: "Lilita One", cursive;
+        letter-spacing: 5px;
+        margin: 0 0 15px 0;
+    }
+
+    &__text {
+        font-family: "Acme", sans-serif;
+        font-size: 20px;
+        color: $primary;
+        letter-spacing: 1px;
+        margin: 0 6px 0 0;
+
+        &--wrapper {
+            display: flex;
+        }
+    }
+
+    &__link {
+        font-family: "Acme", sans-serif;
+        font-size: 20px;
+        color: $primary-light;
+        letter-spacing: 1px;
+        text-decoration: underline;
+        cursor: pointer;
+
+        &:hover {
+            color: $red-dark;
+            transition: all 0.5s;
+        }
+    }
+
+    &__main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: white;
+        border-radius: 8px;
+        margin: 20px 0 0 0;
+        padding: 0 50px;
+        border: 1px solid $light-gray;
+
+        &--wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0 20px 0;
+        }
+
+        &--header {
+            font-family: "Rubik", sans-serif;
+            font-size: 20px;
+            color: $primary;
+            margin: 5px 0 15px 0;
+        }
+
+        &--text {
+            display: flex;
+            margin: 0 0 20px 0;
+        }
+
+        &--desc {
+            font-family: "Rubik", sans-serif;
+            font-size: 18px;
+            color: $primary-dark;
+            margin: 0 6px 0 0;
+
+            &-bold {
+                font-weight: bold;
+            }
+        }
+
+        &--policy {
+            font-family: "Rubik", sans-serif;
+            font-size: 18px;
+            color: $primary-light;
+            text-decoration: underline;
+            cursor: pointer;
+
+            &:hover {
+                color: $red-dark;
+                transition: all 0.5s;
+            }
+        }
+    }
+
+    &__picker {
+        margin: 0 20px 0 0;
+
+
+        &--wrapper {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+
+.react-calendar__tile.react-calendar__month-view__days__day {
+    // color: brown;
+    //font-family: "Rubik", sans-serif;
+
+}

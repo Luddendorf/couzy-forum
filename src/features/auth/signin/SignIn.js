@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { Button } from '../../../components/button/Button';
 import { InputText } from '../../../components/inputText/InputText';
+import { useLoading } from '../../../components/spinner/Spinner';
 import { signInUser } from '../authAPI';
 
 export function SignIn() {
@@ -15,6 +16,9 @@ export function SignIn() {
     const [backendPayload, setBackendPayload] = useState({ email: null, password: null });
     //const validBackendPayload = null;
     const [isLoading, setIsLoading] = useState(false);
+    const [signInAnswer, setSignInAnswer] = useState(null);
+
+    const { loading, setLoading } = useLoading();
 
     const handleEmailInput = (payload) => {
         setIsEmailPristine(false);
@@ -22,7 +26,6 @@ export function SignIn() {
         if (!payload.validation) {
             setEmailErrorMessage('');
             setBackendPayload({ ...backendPayload, email: payload.input });
-            sendValidSignInToBackend();
             return;
         }
         const key = Object.keys(payload.validation.errors)[0];
@@ -43,9 +46,10 @@ export function SignIn() {
     const sendValidSignInToBackend = () => {
         if (isFormValid) {
             const formPayload = backendPayload;
-            // console.log('Form payload: ', formPayload);
-            setIsLoading(true);
-            signInUser('Hello', setIsLoading);
+            setLoading(true);
+            const signInResponse = signInUser(formPayload, setLoading);
+            console.log('signInResponse', signInResponse);
+            setSignInAnswer(signInResponse);
         }
     }
 
@@ -98,11 +102,11 @@ export function SignIn() {
                     {passwordErrorMessage}</div>}
                 {!passwordErrorMessage && <div className="signin-form__spacer"></div>}
                 <div className="signin-form__buttons">
-                    <Button legend="Sign In" width="120" height="40" fontSize="24" disabled={!isFormValid} />
+                    <Button legend="Sign In" width="120" height="40" fontSize="24" disabled={!isFormValid} handleClick={sendValidSignInToBackend} />
                 </div>
+                {signInAnswer && <span>{signInAnswer}</span>}
             </div>
-            {/* <h1>{process.env.REACT_APP_API_URI}</h1> */}
-            {/* {isLoading && <div style={{ width: '100px', height: '100px', backgroundColor: 'red' }}></div>} */}
+            {/* {loading && <Spinner />} */}
         </div>
     );
 }

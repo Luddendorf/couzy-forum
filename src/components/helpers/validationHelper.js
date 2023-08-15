@@ -19,6 +19,11 @@ export const validators = {
         validate: (input) => {
             return String(input).match(/^(?=.*[0-9])(?=.*[A-Z])(?=.*\W).{8,20}$/);
         }
+    },
+    userName: {
+        validate: (input) => {
+            return String(input).match(/^\w([._'\s-](?![._])|\w){3,40}\w$/);
+        }
     }
 };
 

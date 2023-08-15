@@ -1,0 +1,157 @@
+.spinner {
+    &__container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: $light;
+        opacity: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__box {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__holder {
+        display: inherit;
+        position: relative;
+        font-size: 0px;
+        top: 40px;
+        left: 51px;
+        width: 60px;
+        height: 60px;
+        transform: scale(2);
+    }
+
+    &__ray {
+        &-1 {
+            position: absolute;
+            width: 5px;
+            height: 15px;
+            margin: 2px;
+            background-color: $primary-light;
+            border-radius: 2px;
+            transition: all 2s ease 0s;
+            animation: 1.2s ease-in-out 0.12s infinite normal none running spinner-fade;
+            top: 20px;
+            left: 0px;
+        }
+
+        &-2 {
+            position: absolute;
+            width: 5px;
+            height: 15px;
+            margin: 2px;
+            background-color: $primary-light;
+            border-radius: 2px;
+            transition: all 2s ease 0s;
+            animation: 1.2s ease-in-out 0.24s infinite normal none running spinner-fade;
+            top: 13.6364px;
+            left: 13.6364px;
+            transform: rotate(-45deg);
+        }
+
+        &-3 {
+            position: absolute;
+            width: 5px;
+            height: 15px;
+            margin: 2px;
+            background-color: $primary-light;
+            border-radius: 2px;
+            transition: all 2s ease 0s;
+            animation: 1.2s ease-in-out 0.36s infinite normal none running spinner-fade;
+            top: 0px;
+            left: 20px;
+            transform: rotate(90deg);
+        }
+
+        &-4 {
+            position: absolute;
+            width: 5px;
+            height: 15px;
+            margin: 2px;
+            background-color: $primary-light;
+            border-radius: 2px;
+            transition: all 2s ease 0s;
+            animation: 1.2s ease-in-out 0.48s infinite normal none running spinner-fade;
+            top: -13.6364px;
+            left: 13.6364px;
+            transform: rotate(45deg);
+        }
+
+        &-5 {
+            position: absolute;
+            width: 5px;
+            height: 15px;
+            margin: 2px;
+            background-color: $primary-light;
+            border-radius: 2px;
+            transition: all 2s ease 0s;
+            animation: 1.2s ease-in-out 0.6s infinite normal none running spinner-fade;
+            top: -20px;
+            left: 0px;
+        }
+
+        &-6 {
+            position: absolute;
+            width: 5px;
+            height: 15px;
+            margin: 2px;
+            background-color: $primary-light;
+            border-radius: 2px;
+            transition: all 2s ease 0s;
+            animation: 1.2s ease-in-out 0.72s infinite normal none running spinner-fade;
+            top: -13.6364px;
+            left: -13.6364px;
+            transform: rotate(-45deg);
+        }
+
+        &-7 {
+            position: absolute;
+            width: 5px;
+            height: 15px;
+            margin: 2px;
+            background-color: $primary-light;
+            border-radius: 2px;
+            transition: all 2s ease 0s;
+            animation: 1.2s ease-in-out 0.84s infinite normal none running spinner-fade;
+            top: 0px;
+            left: -20px;
+            transform: rotate(90deg);
+        }
+
+        &-8 {
+            position: absolute;
+            width: 5px;
+            height: 15px;
+            margin: 2px;
+            background-color: $primary-light;
+            border-radius: 2px;
+            transition: all 2s ease 0s;
+            animation: 1.2s ease-in-out 0.96s infinite normal none running react-spinners-FadeLoader-fade;
+            top: 13.6364px;
+            left: -13.6364px;
+            transform: rotate(45deg);
+        }
+    }
+}
+
+@keyframes spinner-fade {
+    0% {
+        background-color: $primary-light;
+    }
+
+    100% {
+        background-color: $primary-faded;
+    }
+}
